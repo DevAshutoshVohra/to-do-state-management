@@ -5,40 +5,118 @@ class TaskDone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Column(
+    return  Column(
         children: [
           Card(
-              child: Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: ListTile(
-                      subtitle: Text(
-                        DateTime.now().day.toString(),
-                      ),
-                      title: const Text(
-                        'do work',
-                        style: TextStyle(
-                          fontFamily: 'Open Sans',
-                          fontSize: 20
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: ListTile(
+                        subtitle: Text(
+                          DateTime.now().day.toString(),
+                        ),
+                        title: const Text(
+                          'do work',
+                          style: TextStyle(
+                              fontFamily: 'Open Sans', fontSize: 20),
                         ),
                       ),
                     ),
-                  ),
-                  const Checkbox(
-                    value: true,
-                    onChanged: null,
-                    shape: CircleBorder(),
-                  ),
-                ],
-              )
-            ],
-          ))
+                    const Checkbox(
+                      value: true,
+                      onChanged: null,
+                      shape: CircleBorder(),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          Card(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: ListTile(
+                        subtitle: Text(
+                          DateTime.now().day.toString(),
+                        ),
+                        title: const Text(
+                          'do work',
+                          style: TextStyle(
+                              fontFamily: 'Open Sans', fontSize: 20),
+                        ),
+                      ),
+                    ),
+                    const Checkbox(
+                      value: true,
+                      onChanged: null,
+                      shape: CircleBorder(),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          Card(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: ListTile(
+                        subtitle: Text(
+                          DateTime.now().day.toString(),
+                        ),
+                        title: const Text(
+                          'do work',
+                          style: TextStyle(
+                              fontFamily: 'Open Sans', fontSize: 20),
+                        ),
+                      ),
+                    ),
+                    const Checkbox(
+                      value: true,
+                      onChanged: null,
+                      shape: CircleBorder(),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          Card(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: ListTile(
+                        subtitle: Text(
+                          DateTime.now().day.toString(),
+                        ),
+                        title: const Text(
+                          'do work',
+                          style: TextStyle(
+                              fontFamily: 'Open Sans', fontSize: 20),
+                        ),
+                      ),
+                    ),
+                    const Checkbox(
+                      value: true,
+                      onChanged: null,
+                      shape: CircleBorder(),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
         ],
-      ),
+      
     );
   }
 }
