@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
       builder: (context, obj, child) => DefaultTabController(
         length: 2,
         child: Scaffold(
+          floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
           backgroundColor: const Color.fromRGBO(250, 251, 255, 1),
           appBar: AppBar(
             bottom: const TabBar(
@@ -28,8 +29,10 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             backgroundColor: const Color.fromRGBO(77, 91, 190, 2),
-            title: const Text('To-do list',textAlign: TextAlign.left,),
-            
+            title: const Text(
+              'To-do list',
+              textAlign: TextAlign.left,
+            ),
             actions: [
               Container(
                 margin: const EdgeInsets.all(5),
@@ -58,13 +61,14 @@ class HomeScreen extends StatelessWidget {
                   // }, separatorBuilder:(context, index) => const Divider(), itemCount: obj.demoTaskList.length),
 
                   SizedBox(
-                    height: 700,child: ListView.builder(
+                    height: 700,
+                    child: ListView.builder(
                       itemCount: obj.demoTaskList.length,
                       itemBuilder: (context, index) =>
-                          TaskCard(str: obj.demoTaskList[index].task),
-                    ),),
-                  
-                  
+                          TaskCard(str: obj.demoTaskList[index].task,index:index),
+                    ),
+                  ),
+
                   // Container(
                   //   height: 700,
                   //   child: ListView.builder(
@@ -75,15 +79,15 @@ class HomeScreen extends StatelessWidget {
                   // ),
 
                   const FloatingActionButton(
+                    backgroundColor: Color.fromRGBO(77, 91, 190, 2),
                     onPressed: null,
-                    shape: RoundedRectangleBorder(),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
                     child: Icon(Icons.add),
                   ),
-
-             
                 ],
               ),
-            const TaskDone(),
+              const TaskDone(),
             ],
           ),
         ),

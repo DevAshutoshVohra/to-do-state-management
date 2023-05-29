@@ -1,122 +1,21 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import 'package:todo/model/task_card.dart';
+import 'package:todo/model/task_notifier.dart';
 class TaskDone extends StatelessWidget {
   const TaskDone({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
-        children: [
-          Card(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: ListTile(
-                        subtitle: Text(
-                          DateTime.now().day.toString(),
-                        ),
-                        title: const Text(
-                          'do work',
-                          style: TextStyle(
-                              fontFamily: 'Open Sans', fontSize: 20),
-                        ),
-                      ),
-                    ),
-                    const Checkbox(
-                      value: true,
-                      onChanged: null,
-                      shape: CircleBorder(),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-          Card(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: ListTile(
-                        subtitle: Text(
-                          DateTime.now().day.toString(),
-                        ),
-                        title: const Text(
-                          'do work',
-                          style: TextStyle(
-                              fontFamily: 'Open Sans', fontSize: 20),
-                        ),
-                      ),
-                    ),
-                    const Checkbox(
-                      value: true,
-                      onChanged: null,
-                      shape: CircleBorder(),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-          Card(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: ListTile(
-                        subtitle: Text(
-                          DateTime.now().day.toString(),
-                        ),
-                        title: const Text(
-                          'do work',
-                          style: TextStyle(
-                              fontFamily: 'Open Sans', fontSize: 20),
-                        ),
-                      ),
-                    ),
-                    const Checkbox(
-                      value: true,
-                      onChanged: null,
-                      shape: CircleBorder(),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-          Card(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: ListTile(
-                        subtitle: Text(
-                          DateTime.now().day.toString(),
-                        ),
-                        title: const Text(
-                          'do work',
-                          style: TextStyle(
-                              fontFamily: 'Open Sans', fontSize: 20),
-                        ),
-                      ),
-                    ),
-                    const Checkbox(
-                      value: true,
-                      onChanged: null,
-                      shape: CircleBorder(),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-        ],
-      
+    return Consumer<TaskNotifier>(
+      builder: (context, obj, child) => SizedBox(
+        height: 700,
+        child: ListView.builder(
+          itemCount: obj.taskDoneList.length,
+          itemBuilder: (context, index) =>
+              TaskCard(str: obj.taskDoneList[index].task,index: index,),
+        ),
+      ),
     );
   }
 }
