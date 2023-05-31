@@ -4,7 +4,7 @@ import 'package:todo/model/task_notifier.dart';
 
 // ignore: must_be_immutable
 class CardTaskDone extends StatelessWidget {
-  CardTaskDone({super.key, required this.str,required this.id});
+  CardTaskDone({super.key, required this.str, required this.id});
   final String str;
   final int id;
 
@@ -15,7 +15,7 @@ class CardTaskDone extends StatelessWidget {
     return Consumer<TaskNotifier>(
       builder: (context, obj, child) => Container(
         // margin: EdgeInsets.all(10),
-        padding:const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Card(
           child: Column(
             children: [
@@ -33,18 +33,18 @@ class CardTaskDone extends StatelessWidget {
                       ),
                     ),
                   ),
-
- 
-             Padding(
-               padding:  EdgeInsets.all(10),
-               child:     ElevatedButton(onPressed:()=> obj.delTaskDone(id), child: Icon(Icons.delete_forever_rounded,color: Colors.black,)),
-             
-             )
-              
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    // ignore: prefer_const_constructors
+                    child: ElevatedButton(
+                        onPressed: () => obj.delTaskDone(id),
+                        child: Icon(
+                          Icons.delete_forever_rounded,
+                          color: Colors.black,
+                        )),
+                  )
                 ],
               ),
-
-
             ],
           ),
         ),
