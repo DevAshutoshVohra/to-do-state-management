@@ -6,21 +6,57 @@ import 'package:todo/model/task_notifier.dart';
 import 'package:todo/screens/taskdone.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+   TextEditingController controller=TextEditingController();
 
-  @override
+  HomeScreen({super.key});
+  String taskstr = '';
+
+  
+  // @override 
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   controller = TextEditingController();
+  // }
+  
+  @override 
+  
   Widget build(BuildContext context) {
+    void submit() {
+      Navigator.of(context).pop(controller.text);
+       controller.clear();
+    }
+
+    Future<String?> openDialog() => showDialog<String>(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text(' Enter a Task '),
+            content: TextField(
+              autofocus: true,
+              controller: controller,
+              decoration: InputDecoration(hintText: 'Enter a Task'),
+            ),
+            actions: [
+              TextButton(
+                onPressed: submit,
+                child: const Text(' Submit '),
+              ),
+            ],
+          ),
+        );
+
     return Consumer<TaskNotifier>(
+      
       builder: (context, obj, child) => DefaultTabController(
         length: 2,
         child: Scaffold(
-          floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+          
           backgroundColor: const Color.fromRGBO(250, 251, 255, 1),
           appBar: AppBar(
             bottom: TabBar(
               tabs: [
                 Tab(
-                  text: ' All Task  ${obj.demoTaskList.length}',
+                  text: ' All Task  ${obj.taskList.length}',
                   // child: Text('data'),
                 ),
                 Tab(
@@ -56,40 +92,35 @@ class HomeScreen extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // ListView.separated(itemBuilder:(context, index) {
-                  //   return
-                  //   ListTile(title: Text(obj.demoTaskList[index].task),);
-                  // }, separatorBuilder:(context, index) => const Divider(), itemCount: obj.demoTaskList.length),
-
                   SizedBox(
                     height: 700,
                     child: ListView.builder(
-                      itemCount: obj.demoTaskList.length,
+                      itemCount: obj.taskList.length,
                       itemBuilder: (context, index) => TaskCard(
-                        str: obj.demoTaskList[index].task,
-                        id: obj.demoTaskList[index].id,
+                        str: obj.taskList[index].task,
+                        id: obj.taskList[index].id,
                       ),
                     ),
                   ),
+                  FloatingActionButton(
+                    backgroundColor:const  Color.fromRGBO(77, 91, 190, 2),
+                    onPressed: () async {
+                      final  str = await openDialog();
 
-                  // Container(
-                  //   height: 700,
-                  //   child: ListView.builder(
-                  //     itemCount: obj.demoTaskList.length,
-                  //     itemBuilder: (context, index) =>
-                  //         TaskCard(str: obj.demoTaskList[index].task),
-                  //   ),
-                  // ),
+                      if (str == null || str.isEmpty) return;
 
-                  const FloatingActionButton(
-                    backgroundColor: Color.fromRGBO(77, 91, 190, 2),
-                    onPressed: null,
-                    shape: RoundedRectangleBorder(
+                        taskstr = str;
+                        
+                      obj.addIntoList(taskstr);
+                      print(taskstr);
+
+                    },
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
                       ),
                     ),
-                    child: Icon(Icons.add),
+                    child: const Icon(Icons.add),
                   ),
                 ],
               ),

@@ -4,9 +4,9 @@ import 'package:todo/model/task_notifier.dart';
 
 // ignore: must_be_immutable
 class TaskCard extends StatefulWidget {
-  TaskCard({super.key, required this.str, required this.id});
+  const TaskCard({super.key, required this.str, required this.id});
   final String str;
-  final int id;
+  final num id;
 
   @override
   State<TaskCard> createState() => _TaskCardState();
@@ -39,14 +39,7 @@ class _TaskCardState extends State<TaskCard> {
                     ),
                   ),
 
-                  // RadioMenuButton(
-                  //     value: false,
-                  //     groupValue: null,
-                  //     onChanged:(value) {
-                  //       value=true;
-
-                  //     },
-                  //     child: child),
+                  
 
                   Checkbox(
                     value: myvalue,
@@ -62,11 +55,7 @@ class _TaskCardState extends State<TaskCard> {
                       });
                      
 
-                     
-                      // obj.demoTaskList.forEach((element) {
-                      //   if (element.id == id) element.taskStatus = true;
-
-                      // });
+                    
                     },
                     shape: const CircleBorder(),
                   ),

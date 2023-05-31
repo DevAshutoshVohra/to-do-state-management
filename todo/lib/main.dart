@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (context) => TaskNotifier())
         ],
-        child: const HomeScreen(),
+        child:  HomeScreen(),
       ),
     );
   }

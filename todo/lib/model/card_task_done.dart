@@ -6,7 +6,7 @@ import 'package:todo/model/task_notifier.dart';
 class CardTaskDone extends StatelessWidget {
   CardTaskDone({super.key, required this.str, required this.id});
   final String str;
-  final int id;
+  final num id;
 
   bool myvalue = false;
 
