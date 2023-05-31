@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:todo/model/task_notifier.dart';
 
 // ignore: must_be_immutable
-class TaskCard extends StatelessWidget {
-  TaskCard({super.key, required this.str, required this.id});
+class CardTaskDone extends StatelessWidget {
+  CardTaskDone({super.key, required this.str,required this.id});
   final String str;
   final int id;
 
@@ -34,30 +34,17 @@ class TaskCard extends StatelessWidget {
                     ),
                   ),
 
-                  // RadioMenuButton(
-                  //     value: false,
-                  //     groupValue: null,
-                  //     onChanged:(value) {
-                  //       value=true;
-
-                  //     },
-                  //     child: child),
-
-                  Checkbox(
-                    value: myvalue,
-                    onChanged: (bool? value) {
-                      myvalue = true;
-                      obj.taskCompleted(id);
-                      
-                      // obj.demoTaskList.forEach((element) {
-                      //   if (element.id == id) element.taskStatus = true;
-                     
-                      // });
-                    },
-                    shape: const CircleBorder(),
-                  ),
+ 
+             Padding(
+               padding:  EdgeInsets.all(10),
+               child:     ElevatedButton(onPressed:()=> obj.delTaskDone(id), child: Icon(Icons.delete_forever_rounded,color: Colors.black,)),
+             
+             )
+              
                 ],
-              )
+              ),
+
+
             ],
           ),
         ),

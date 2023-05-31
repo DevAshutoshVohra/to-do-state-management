@@ -65,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                     child: ListView.builder(
                       itemCount: obj.demoTaskList.length,
                       itemBuilder: (context, index) =>
-                          TaskCard(str: obj.demoTaskList[index].task,index:index),
+                          TaskCard(str: obj.demoTaskList[index].task,id: obj.demoTaskList[index].id,),
                     ),
                   ),
 
