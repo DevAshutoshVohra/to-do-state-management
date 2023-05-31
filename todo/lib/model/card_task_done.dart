@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/model/task_notifier.dart';
-
+import 'package:todo/model/months.dart';
 // ignore: must_be_immutable
 class CardTaskDone extends StatelessWidget {
   CardTaskDone({super.key, required this.str, required this.id});
@@ -23,7 +23,11 @@ class CardTaskDone extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ListTile(
-                      subtitle: Text('  ${DateTime.now().day.toString()}'),
+                      subtitle: Text(
+                          ' ${DateTime.now().day} ${Months.months[DateTime.now().month - 1]} ${DateTime.now().year}',style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Open Sans',
+                            fontSize: 14),),
                       title: Text(
                         str,
                         style: const TextStyle(
@@ -36,12 +40,13 @@ class CardTaskDone extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10),
                     // ignore: prefer_const_constructors
-                    child: ElevatedButton(
-                        onPressed: () => obj.delTaskDone(id),
-                        child: Icon(
-                          Icons.delete_forever_rounded,
-                          color: Colors.black,
-                        )),
+                    child: IconButton(
+                      onPressed: () => obj.delTaskDone(id),
+                   icon: const Icon(
+                        Icons.delete_forever_rounded,
+                        color: Colors.black,
+                      ),
+                    ),
                   )
                 ],
               ),

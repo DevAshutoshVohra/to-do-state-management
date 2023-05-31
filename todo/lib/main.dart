@@ -21,3 +21,20 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+/*
+
+sample todos
+Complete the report for the weekly team meeting.
+Buy groceries for the week.
+Schedule a dentist appointment.
+Call the insurance company to inquire about coverage.
+Finish reading the book "The Great Gatsby."
+Organize and declutter the closet.
+Pay the monthly bills (electricity, water, internet).
+Research and book a vacation destination.
+Attend the yoga class at 6 PM.
+Start learning a new programming language or framework.
+
+*/

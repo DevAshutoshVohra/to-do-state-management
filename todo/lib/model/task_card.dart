@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/model/task_notifier.dart';
+import 'package:todo/model/months.dart';
 
 // ignore: must_be_immutable
 class TaskCard extends StatefulWidget {
@@ -28,7 +29,11 @@ class _TaskCardState extends State<TaskCard> {
                 children: [
                   Expanded(
                     child: ListTile(
-                      subtitle: Text('  ${DateTime.now().day.toString()}'),
+                      subtitle: Text(
+                          ' ${DateTime.now().day} ${Months.months[DateTime.now().month - 1]} ${DateTime.now().year}',style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Open Sans',
+                            fontSize: 14),),
                       title: Text(
                         widget.str,
                         style: const TextStyle(
@@ -38,24 +43,29 @@ class _TaskCardState extends State<TaskCard> {
                       ),
                     ),
                   ),
+                  Padding(
+                      padding: const EdgeInsets.all(10),
+                      // ignore: prefer_const_constructors
 
-                  
-
+                      child: IconButton(
+                        onPressed: () => obj.permanentDeleteTask(widget.id),
+                        icon: const Icon(
+                          Icons.delete_forever_rounded,
+                          color: Colors.black,
+                        ),
+                      )),
                   Checkbox(
                     value: myvalue,
                     onChanged: (bool? value) {
                       setState(() {
                         myvalue = value!;
 
-                         if (myvalue) {
-                        obj.taskCompleted(widget.id);
-                      } else {
-                        obj.delTaskDone(widget.id);
-                      }
+                        if (myvalue) {
+                          obj.taskCompleted(widget.id);
+                        } else {
+                          obj.delTaskDone(widget.id);
+                        }
                       });
-                     
-
-                    
                     },
                     shape: const CircleBorder(),
                   ),

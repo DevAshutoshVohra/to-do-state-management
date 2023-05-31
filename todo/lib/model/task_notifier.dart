@@ -17,13 +17,6 @@ class TaskNotifier extends ChangeNotifier {
 
   List<Task> taskDoneList = [];
 
-  // void add(String s, int id) {
-  //   taskList.add(
-  //     Task(task: s, id: id),
-  //   );
-  //   notifyListeners();
-  // }
-
   void addTaskDone() {
     taskDoneList = taskList.where((element) => element.taskStatus).toList();
     notifyListeners();
@@ -39,25 +32,31 @@ class TaskNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-
-  void addIntoList( String str){
-    num currDate=DateTime.now().microsecond;
+  void addIntoList(String str) {
+    num currDate = DateTime.now().microsecond;
     taskList.add(Task(task: str, id: currDate));
     //taskList.add(Task(task: str, id: DateTime.now().microsecond));
     notifyListeners();
   }
+
   void delTaskDone(num id) {
     for (var element in taskList) {
       if (element.id == id) element.taskStatus = false;
     }
-     taskDoneList = taskList.where((element) => element.taskStatus).toList();
-    
+    taskDoneList = taskList.where((element) => element.taskStatus).toList();
+
+    notifyListeners();
+  }
+
+  void permanentDeleteTask(num id) {
+
+    taskList = taskList.where((element) => element.id != id).toList();
+
+    taskDoneList = taskList.where((element) => element.taskStatus).toList();
     notifyListeners();
   }
 
   List<Task> demoTaskList = [
-
-
     Task(task: '  Buy Food  ', id: 1),
     Task(task: '  Pay Utilities ', id: 2),
     Task(task: '  Clean Kitchen ', id: 3),
@@ -75,8 +74,5 @@ class TaskNotifier extends ChangeNotifier {
       task: 'Plan a vacation:',
       id: 11,
     )
-
-
-
   ];
 }

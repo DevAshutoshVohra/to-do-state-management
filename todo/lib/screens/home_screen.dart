@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo/model/months.dart';
 import 'package:todo/model/task_card.dart';
 
 import 'package:todo/model/task_notifier.dart';
@@ -12,13 +14,7 @@ class HomeScreen extends StatelessWidget {
   String taskstr = '';
 
   
-  // @override 
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   controller = TextEditingController();
-  // }
-  
+ 
   @override 
   
   Widget build(BuildContext context) {
@@ -34,7 +30,7 @@ class HomeScreen extends StatelessWidget {
             content: TextField(
               autofocus: true,
               controller: controller,
-              decoration: InputDecoration(hintText: 'Enter a Task'),
+              decoration: const InputDecoration(hintText: 'Enter a Task'),
             ),
             actions: [
               TextButton(
@@ -82,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                   Text(
                     DateTime.now().day.toString(),
                   ),
-                  const Text('May'),
+                   Text(Months.months[DateTime.now().month-1]),
                 ]),
               )
             ],
@@ -106,14 +102,14 @@ class HomeScreen extends StatelessWidget {
                     backgroundColor:const  Color.fromRGBO(77, 91, 190, 2),
                     onPressed: () async {
                       final  str = await openDialog();
-
+          
                       if (str == null || str.isEmpty) return;
-
+          
                         taskstr = str;
-                        
+          
                       obj.addIntoList(taskstr);
-                      print(taskstr);
-
+                  
+          
                     },
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
